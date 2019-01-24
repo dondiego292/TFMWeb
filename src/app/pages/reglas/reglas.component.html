@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body table-responsive">
+                <div class="text-right">
+                    <button [routerLink]="['/reglas/create/', id]" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                <i class="fa fa-plus"></i>
+                Crear Regla
+              </button>
+                    <button [routerLink]="['/preguntas', encuesta]" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                <i class="fa fa-backward"></i>
+                Atrás
+              </button>
+                </div>
+                <h3 class="card-title"> Reglas Registradas ( <small>{{reglas.length}}</small> )</h3>
+
+                <table class="table table-striped" [mfData]="reglas" #mf="mfDataTable" [mfRowsOnPage]="5">
+                    <thead>
+                        <tr>
+                            <th>
+                                <mfDefaultSorter by="type">DEPENDE DE</mfDefaultSorter>
+                            </th>
+                            <th>
+                                <mfDefaultSorter by="name">VALOR</mfDefaultSorter>
+                            </th>
+                            <th>
+                                <mfDefaultSorter by="label">ACCIÓN</mfDefaultSorter>
+                            </th>
+                            <th>
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of mf.data">
+                            <td>{{getDependentName(item.codigoDependiente)}}</td>
+                            <td>{{item.valor}}</td>
+                            <td>{{item.accion }}</td>
+                            <!--<td>{{getTipoPreguntaName(item.tipo) }}</td>-->
+                            <td>
+                                <!--<button [routerLink]="['/reglas/edit', item._id]" type="button" class="btn-rounded btn-primary">
+                              <i class="fa fa-edit"></i>
+                            </button>-->
+                                <button [routerLink]="['/reglas/eliminar', item._id]" type="button" class="btn-rounded btn-primary">
+                              <i class="fa fa-trash"></i>
+                              </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

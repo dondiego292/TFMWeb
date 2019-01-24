@@ -1,0 +1,33 @@
+<div class="row animated fadeIn">
+    <div class="col-md-12">
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form #f="ngForm" ngNativeValidate (ngSubmit)="eliminarRegla(f)">
+                        <div class="form-group">
+                            <label>DEPENDE DE</label>
+                            <input [(ngModel)]="pregunta.texto" name="codigoDependiente" type="text" class="form-control" placeholder="Código Dependiente" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>VALOR</label>
+                            <input [(ngModel)]="regla.valor" name="valor" type="text" class="form-control" placeholder="Valor" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>ACCIÓN</label>
+                            <input [(ngModel)]="regla.accion" name="accion" type="text" class="form-control" placeholder="Valor" readonly>
+                        </div>
+
+
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" [disabled]="!f.form.valid">
+                  <i class="fa fa-save"></i>
+                  Eliminar
+                </button>
+                        <a [routerLink]="['/preguntas/', encuesta]" type="submit" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

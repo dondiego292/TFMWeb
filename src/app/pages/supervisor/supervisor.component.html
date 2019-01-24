@@ -1,0 +1,65 @@
+<div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
+    <div class="row animated fadeIn">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <input #input (keyup)="buscarSupervisor( input.value )" type="text" class="form-control" placeholder="Buscar Supervisor....">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body table-responsive">
+                    <h3 class="card-title"> Supervisores Registrados ( <small>{{supervisores.length}}</small> )</h3>
+                    <table class="table table-striped" [mfData]="supervisores" #mf="mfDataTable" [mfRowsOnPage]="5">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <mfDefaultSorter by="type">NOMBRES</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="name">APELLIDOS</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="label">DNI</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="description">USERNAME</mfDefaultSorter>
+                                </th>
+                                <th>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of mf.data">
+                                <td>{{item.nombres}}</td>
+                                <td>{{item.apellidos}}</td>
+                                <td>{{item.dni}}</td>
+                                <td>{{item.username}}</td>
+                                <td>
+                                    <button [routerLink]="['/supervisor/gestor', item._id]" type="button" class="btn-rounded btn-primary">
+                                  <i class="fa fa-edit"></i>
+                                </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4">
+                                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

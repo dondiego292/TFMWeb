@@ -1,0 +1,28 @@
+<div class="row animated fadeIn">
+    <div class="col-md-12">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">Tipo de Pregunta: {{tipoPregunta.nombre}}</h3>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form #f="ngForm" ngNativeValidate (ngSubmit)="eliminarTipoPregunta(f)">
+                        <div class="form-group">
+                            <label>Tipo de Pregunta</label>
+                            <input [(ngModel)]="tipoPregunta.tipo" name="type" type="text" class="form-control" placeholder="Tipo de Pregunta" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre de Pregunta</label>
+                            <input [(ngModel)]="tipoPregunta.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre de Pregunta" readonly>
+                        </div>
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                      <i class="fa fa-save"></i>
+                      Eliminar
+                    </button>
+                        <a routerLink="/tipo/preguntas" type="submit" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

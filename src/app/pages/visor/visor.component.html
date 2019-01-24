@@ -1,0 +1,74 @@
+<div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }">
+    </ngx-loading>
+
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <agm-map [latitude]="lat" [longitude]="lng" [scrollwheel]="false" [zoom]="zoom" fullscreenControl="true" mapTypeControl="true" panControl="true">
+                        <ng-container>
+                            <agm-polyline *ngFor="let polyline of polylines;let i = index;" [strokeColor]="polyline.color">
+                                <agm-polyline-point *ngFor="let point of polyline.path;let b = index;let last = last" [latitude]="point.Latitud" [longitude]="point.Longitud">
+                                    <agm-marker *ngIf="b == 0" [latitude]="point.Latitud" [longitude]="point.Longitud" iconUrl="/assets/img/init.png" (markerClick)="buscarGestor(point.Gestor)">
+                                        <agm-info-window>
+                                            <strong>{{point.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</strong>
+                                            <p *ngIf="nombreGestor">
+                                                {{nombreGestor}}
+                                            </p>
+                                        </agm-info-window>
+                                    </agm-marker>
+
+                                    <!--<agm-marker *ngIf="point.Estadia > 300" [latitude]="point.Latitud" [longitude]="point.Longitud" iconUrl="/assets/img/estadia.png">
+                                        <agm-info-window>
+                                            <strong>{{point.StartDate}}</strong>
+                                            <p *ngIf="point.Estadia">
+                                                {{point.Estadia}}
+                                            </p>
+                                        </agm-info-window>
+                                    </agm-marker>-->
+
+                                    <agm-marker *ngIf="last" [latitude]="point.Latitud" [longitude]="point.Longitud" iconUrl="/assets/img/last.png" (markerClick)="buscarGestor(point.Gestor)">
+                                        <agm-info-window>
+                                            <strong>{{point.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</strong>
+                                            <p *ngIf="nombreGestor">
+                                                {{nombreGestor}}
+                                            </p>
+                                        </agm-info-window>
+                                    </agm-marker>
+                                </agm-polyline-point>
+
+
+
+                            </agm-polyline>
+                        </ng-container>
+                    </agm-map>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>GESTORES</label>
+                        <select class="form-control" id="gestores" #t (change)="rechargeData(t.value)" name="gestor" [(ngModel)]="gestorId">
+                            <option value="0">SELECCIONE</option>
+                          <option *ngFor="let t of gestores" [value]="t._id">{{t.nombres}} {{t.apellidos}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>FECHA</label>
+                        <input type="text" class="form-control" [minDate]="minDate" [maxDate]="maxDate" #dp="bsDatepicker" bsDatepicker [(bsValue)]="fecha" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }">
+                    </div>
+                    <div class=" form-group ">
+                        <button (click)="buscar() " class="btn btn-success waves-effect waves-light m-r-10 ">
+                          <i class="fa fa-save "></i>
+                          BUSCAR
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

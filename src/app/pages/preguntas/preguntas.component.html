@@ -1,0 +1,92 @@
+<div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
+    <!--<h4>Simple sortable</h4>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                Favorite drinks
+            </div>
+            <div class="panel-body">
+                <ul class="list-group" dnd-sortable-container [sortableData]="listOne">
+                    <li *ngFor="let item of listOne; let i = index" class="list-group-item" dnd-sortable [sortableIndex]="i">{{item}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                My prefences:<br/>
+                <span *ngFor="let item of listOne; let i = index">{{i + 1}}) {{item}}<br/></span>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body table-responsive">
+                    <div class="text-right">
+                        <button [routerLink]="['/preguntas/create/', id]" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                  <i class="fa fa-plus"></i>
+                  Crear Pregunta
+                </button>
+                    </div>
+                    <h3 class="card-title"> Preguntas Registradas ( <small>{{preguntas.length}}</small> )</h3>
+
+                    <table class="table table-striped" [mfData]="preguntas" #mf="mfDataTable" [mfRowsOnPage]="5">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <mfDefaultSorter by="type">TEXTO</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="name">ETIQUETA</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="label">CATÁLOGO</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="label">TIPO</mfDefaultSorter>
+                                </th>
+                                <th>
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of mf.data">
+                                <td>{{item.texto}}</td>
+                                <td>{{item.etiqueta}}</td>
+                                <td>{{getCatalogoName(item.catalogo) }}</td>
+                                <td>{{getTipoPreguntaName(item.tipo) }}</td>
+                                <td>
+                                    <button [routerLink]="['/preguntas/edit', item._id]" type="button" class="btn-rounded btn-primary">
+                                <i class="fa fa-edit"></i>
+                              </button>
+                                    <button [routerLink]="['/preguntas/eliminar', item._id]" type="button" class="btn-rounded btn-primary">
+                                <i class="fa fa-trash"></i>
+                                </button>
+                                    <button [routerLink]="['/reglas', item._id]" type="button" class="btn-rounded btn-primary">
+                                <i class="fa fa-hourglass"></i>
+                                </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4">
+                                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

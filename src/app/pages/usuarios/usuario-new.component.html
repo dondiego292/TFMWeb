@@ -1,0 +1,53 @@
+<div class="row animated fadeIn">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    <div class="col-md-12">
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form #f="ngForm" ngNativeValidate (ngSubmit)="crearUsuario(f)">
+                        <div class="form-group">
+                            <label>UserName</label>
+                            <input [(ngModel)]="usuario.username" name="type" type="text" class="form-control" placeholder="UserName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>DNI</label>
+                            <input [(ngModel)]="usuario.dni" name="dni" type="text" class="form-control" placeholder="DNI" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nombres</label>
+                            <input [(ngModel)]="usuario.nombres" name="nombres" type="text" class="form-control" placeholder="Nombres" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Apellidos</label>
+                            <input [(ngModel)]="usuario.apellidos" name="apellidos" type="text" class="form-control" placeholder="Apellidos" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input [(ngModel)]="usuario.email" name="email" type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input [(ngModel)]="usuario.password" name="password" type="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label>ROL</label>
+                            <select class="form-control" id="accion" name="tipo" [(ngModel)]="usuario.role" required>
+                                <option value="ADMIN_ROLE">ADMINISTRADOR</option>
+                                <option value="SUPERVISOR_ROLE">SUPERVISOR</option>
+                                <option value="USER_ROLE">USUARIO</option>
+                              </select>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" [disabled]="!f.form.valid">
+                      <i class="fa fa-save"></i>
+                      Guardar
+                    </button>
+                        <a routerLink="/usuarios" type="submit" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,62 @@
+<div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body table-responsive">
+                    <h3 class="card-title"> Gestores Asignados ( <small>{{gestoresAsignados.length}}</small> )</h3>
+                    <table class="table table-striped" [mfData]="gestoresAsignados" #mf="mfDataTable" [mfRowsOnPage]="5">
+                        <thead>
+                            <tr *ngIf="gestores.length > 0">
+                                <th colspan="2">
+                                    <select class="form-control" id="gestores" #t (change)="rechargeData(t.value)" name="gestor" [(ngModel)]="gestorId">
+                                      <option *ngFor="let t of gestores" [value]="t._id">{{t.nombres}} {{t.apellidos}}</option>
+                                    </select>
+                                </th>
+                                <th>
+                                    <button (click)="asignarGestor()" class="btn btn-primary" [disabled]="!gestorId">
+                                        <i class="fa fa-save"></i>
+                                      </button>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <mfDefaultSorter by="type">NOMBRES</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="name">APELLIDOS</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="label">IMEI</mfDefaultSorter>
+                                </th>
+                                <th>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of mf.data">
+                                <td>{{item.nombres}}</td>
+                                <td>{{item.apellidos}}</td>
+                                <td>{{item.imei}}</td>
+                                <td>
+                                    <button (click)="borrarSupervisorGestor(item)" class="btn btn-danger">
+                                        <i class="fa fa-trash-o"></i>
+                                      </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3">
+                                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

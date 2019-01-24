@@ -1,0 +1,35 @@
+<div class="row animated fadeIn">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    <div class="col-md-12">
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form #f="ngForm" ngNativeValidate (ngSubmit)="crearGestor(f)">
+                        <div class="form-group">
+                            <label>Usuario</label>
+                            <select class="form-control" id="usuario" #t (change)="rechargeData(t.value)" name="usuario" [(ngModel)]="gestor.usuario" required>
+                                <option *ngFor="let u of usuarios" [value]="u._id">{{u.nombres}} {{u.apellidos}}</option>
+                              </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Imei</label>
+                            <input [(ngModel)]="gestor.imei" name="imei" type="text" class="form-control" placeholder="IMEI" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Color</label>
+                            <!--<input [(ngModel)]="gestor.color" name="color" type="text" class="form-control" placeholder="Color" required>-->
+                            <input [(colorPicker)]="color" [style.background]="color" [value]="color" [cpCancelButton]="true" [cpCancelButtonClass]="'btn btn-primary btn-xs'" [cpOutputFormat]="'hex'" />
+                        </div>
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" [disabled]="!f.form.valid">
+                    <i class="fa fa-save"></i>
+                    Guardar
+                  </button>
+                        <a routerLink="/gestor" type="submit" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

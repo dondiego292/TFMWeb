@@ -1,0 +1,21 @@
+export { RutasService } from './rutas/rutas.service';
+export { EncuestaGestorService } from './encuesta/encuesta-gestor.service';
+export { SupervisorGestorService } from './supervisor-gestor/supervisor-gestor.service';
+export { GestorService } from './gestor/gestor.service';
+export { ReglaService } from './regla/regla.service';
+export { PreguntaService } from './pregunta/pregunta.service';
+export { TipoPreguntaService } from './tipo-pregunta/tipo-pregunta.service';
+export { CatalogoHijoService } from './catalogo/catalogo-hijo.service';
+export { CatalogoService } from './catalogo/catalogo.service';
+export { EncuestaService } from './encuesta/encuesta.service';
+export { VerificaTokenGuard } from './guards/verifica-token.guard';
+export { AdminGuard } from './guards/admin.guard';
+export { MedicoService } from './medico/medico.service';
+export { HospitalService } from './hospital/hospital.service';
+export { SubirArchivoService } from './subir-archivo/subir-archivo.service';
+export { LoginGuardGuard } from './guards/login-guard.guard';
+export { UsuarioService } from './usuario/usuario.service';
+export { SettingsService } from './settings/settings.service';
+export { SharedService } from './shared/shared.service';
+export { SidebarService } from './shared/sidebar.service';
+

@@ -1,0 +1,55 @@
+<div class="row animated fadeIn">
+    <div class="col-md-12">
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form #f="ngForm" ngNativeValidate (ngSubmit)="eliminarPregunta(f)">
+                        <div class="form-group">
+                            <label>Texto</label>
+                            <input [(ngModel)]="pregunta.texto" name="texto" type="text" class="form-control" placeholder="Texto de la Pregunta" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Etiqueta</label>
+                            <input [(ngModel)]="pregunta.etiqueta" name="etiqueta" type="text" class="form-control" placeholder="Etiqueta de la Pregunta" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <label>Obligatorio</label>
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="obligatorio" [(ngModel)]="pregunta.obligatorio" readonly>
+                                <label class="form-check-label" for="exampleCheck1" readonly></label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tipo</label>
+                            <select class="form-control" id="tipo" #t (change)="rechargeData(t.value)" name="tipo" [(ngModel)]="pregunta.tipo" disabled>
+                            <option *ngFor="let t of tipoPreguntas" [value]="t._id">{{t.nombre}}</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group" *ngIf="showCatalogo">
+                            <label>Catálogo</label>
+                            <select class="form-control" id="catalogo" #t name="catalogo" [(ngModel)]="pregunta.catalogo" disabled>
+                            <option *ngFor="let c of catalogos" [value]="c._id" disabled>{{c.nombre}}</option>
+                          </select>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Expresión</label>
+                            <input [(ngModel)]="pregunta.expresion" name="expresion" type="text" class="form-control" placeholder="Expresión de la Pregunta" readonly>
+                        </div>
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" [disabled]="!f.form.valid">
+                    <i class="fa fa-save"></i>
+                    Eliminar
+                  </button>
+                        <a [routerLink]="['/preguntas/', encuesta]" type="submit" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

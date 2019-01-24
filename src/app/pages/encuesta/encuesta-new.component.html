@@ -1,0 +1,41 @@
+<div class="row animated fadeIn">
+    <div class="col-md-12">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">Encuesta: {{encuesta.nombre}}</h3>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form #f="ngForm" ngNativeValidate (ngSubmit)="crearEncuesta(f)">
+                        <div class="form-group">
+                            <label>Tipo</label>
+                            <input [(ngModel)]="encuesta.tipo" name="type" type="text" class="form-control" placeholder="Tipo de Encuesta" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre de la encuesta</label>
+                            <input [(ngModel)]="encuesta.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre de la encuesta" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Etiqueta de la encuesta</label>
+                            <input [(ngModel)]="encuesta.etiqueta" name="etiqueta" type="text" class="form-control" placeholder="Etiqueta de la encuesta" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Libre</label>
+                            <input [(ngModel)]="encuesta.libre" name="libre" type="number" class="form-control" placeholder="Libre" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Descripción de la encuesta</label>
+                            <input [(ngModel)]="encuesta.descripcion" name="descripcion" type="text" class="form-control" placeholder="Descripción de la encuesta" required>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" [disabled]="!f.form.valid">
+                      <i class="fa fa-save"></i>
+                      Guardar
+                    </button>
+                        <a routerLink="/encuestas" type="submit" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

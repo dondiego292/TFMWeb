@@ -1,0 +1,43 @@
+<div class="row animated fadeIn">
+    <div class="col-md-12">
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form #f="ngForm" ngNativeValidate (ngSubmit)="crearRegla(f)">
+
+                        <div class="form-group">
+                            <label>Depende de</label>
+                            <select class="form-control" id="depende" #t (change)="rechargeData(t.value)" name="codigoDependiente" [(ngModel)]="regla.codigoDependiente" required>
+                              <option *ngFor="let p of preguntas" [value]="p.uuid">{{p.texto}}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Valor</label>
+                            <select class="form-control" id="valor" #h name="tipo" [(ngModel)]="regla.valor" required>
+                            <option *ngFor="let h of catalogosHijos" [value]="h.valor">{{h.valor}}</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Accion</label>
+                            <select class="form-control" id="accion" name="tipo" [(ngModel)]="regla.accion" required>
+                          <option value="MOSTRAR">MOSTRAR</option>
+                          <option value="OCULTAR">OCULTAR</option>
+                        </select>
+                        </div>
+
+
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" [disabled]="!f.form.valid">
+                      <i class="fa fa-save"></i>
+                      Guardar
+                    </button>
+                        <a [routerLink]="['/reglas/', id]" type="submit" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,31 @@
+<div class="row animated fadeIn">
+    <div class="col-md-12">
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form #f="ngForm" ngNativeValidate (ngSubmit)="eliminarCatalogo(f)">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input [(ngModel)]="catalogo.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre del Catálogo" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Código</label>
+                            <input [(ngModel)]="catalogo.codigo" name="codigo" type="text" class="form-control" placeholder="Código del Catálogo" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Valor</label>
+                            <input [(ngModel)]="catalogo.valor" name="valor" type="text" class="form-control" placeholder="Valor del Catálogo" readonly>
+                        </div>
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                      <i class="fa fa-save"></i>
+                      Eliminar
+                    </button>
+                        <a routerLink="/catalogos" type="submit" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,81 @@
+<div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
+    <div class="row animated fadeIn">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <input #input (keyup)="buscarGestor( input.value )" type="text" class="form-control" placeholder="Buscar Gestor....">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body table-responsive">
+
+                    <div class="text-right">
+                        <button [routerLink]="['/gestor/create']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                  <i class="fa fa-plus"></i>
+                  Crear Gestor
+                </button>
+                    </div>
+                    <h3 class="card-title"> Gestores Registrados ( <small>{{gestores.length}}</small> )</h3>
+
+                    <table class="table table-striped" [mfData]="gestores" #mf="mfDataTable" [mfRowsOnPage]="5">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <mfDefaultSorter by="type">NOMBRES</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="name">APELLIDOS</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="label">NICKNAME</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="description">IMEI</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="libre">COLOR</mfDefaultSorter>
+                                </th>
+                                <th>
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of mf.data">
+                                <td>{{item.nombres}}</td>
+                                <td>{{item.apellidos}}</td>
+                                <td>{{item.nickname}}</td>
+                                <td>{{item.imei}}</td>
+                                <td width="10" height="10" [style.background-color]="item.color"></td>
+                                <td>
+                                    <button [routerLink]="['/gestor/edit', item._id]" type="button" class="btn-rounded btn-primary">
+                                  <i class="fa fa-edit"></i>
+                                </button>
+                                    <button (click)="borrarGestor(item)" type="button" class="btn-rounded btn-primary">
+                                  <i class="fa fa-trash"></i>
+                                  </button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

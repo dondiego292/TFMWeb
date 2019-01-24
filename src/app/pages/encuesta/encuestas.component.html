@@ -1,0 +1,105 @@
+<div>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+
+    <div class="row animated fadeIn">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <input #input (keyup)="buscarEncuesta( input.value )" type="text" class="form-control" placeholder="Buscar Encuesta....">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body table-responsive">
+
+                    <div class="text-right">
+                        <button [routerLink]="['/encuesta/nuevo']" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                    <i class="fa fa-plus"></i>
+                    Crear Encuesta
+                  </button>
+                    </div>
+                    <h3 class="card-title"> Encuestas Registradas ( <small>{{encuestas.length}}</small> )</h3>
+
+                    <table class="table table-striped" [mfData]="encuestas" #mf="mfDataTable" [mfRowsOnPage]="5">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <mfDefaultSorter by="type">TIPO</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="name">NOMBRE</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="label">ETIQUETA</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="description">DESCRIPCIÓN</mfDefaultSorter>
+                                </th>
+                                <th>
+                                    <mfDefaultSorter by="libre">LIBRE</mfDefaultSorter>
+                                </th>
+                                <th>
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of mf.data">
+                                <td>{{item.tipo}}</td>
+                                <td>{{item.nombre}}</td>
+                                <td>{{item.etiqueta}}</td>
+                                <td>{{item.descripcion}}</td>
+                                <td *ngIf="item.libre == 0">NO</td>
+                                <td *ngIf="item.libre != 0">SI</td>
+                                <td>
+                                    <div *ngIf="item.estado === 0">
+                                        <button [routerLink]="['/encuesta', item.uuid]" type="button" class="btn-rounded btn-primary">
+                                          <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button [routerLink]="['/encuesta/eliminar', item.uuid]" type="button" class="btn-rounded btn-primary">
+                                          <i class="fa fa-trash"></i>
+                                        </button>
+                                        <button [routerLink]="['/preguntas', item._id]" type="button" class="btn-rounded btn-primary">
+                                          <i class="fa fa-question"></i>
+                                        </button>
+                                        <button [routerLink]="['/encuesta/gestor', item._id]" type="button" class="btn-rounded btn-primary">
+                                          <i class="fa fa-align-center"></i>
+                                        </button>
+                                        <button (click)="publicarEncuesta(item)" type="button" class="btn-rounded btn-primary">
+                                          <i class="fa fa-copy"></i>
+                                        </button>
+
+                                    </div>
+                                    <div *ngIf="item.estado === 1">
+                                        <button [routerLink]="['/encuesta/gestor', item._id]" type="button" class="btn-rounded btn-primary">
+                                          <i class="fa fa-align-center"></i>
+                                        </button>
+
+                                        <button (click)="despublicarEncuesta(item)" type="button" class="btn-rounded btn-primary">
+                                          <i class="fa fa-clipboard"></i>
+                                        </button>
+                                    </div>
+
+
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4">
+                                    <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
