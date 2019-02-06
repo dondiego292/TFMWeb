@@ -47,6 +47,7 @@ import { SupervisorComponent } from './supervisor/supervisor.component';
 import { SupervisorAsignacionComponent } from './supervisor/supervisor-asignacion.component';
 import { EncuestaGestorComponent } from './encuesta/encuesta-gestor.component';
 import { VisorComponent } from './visor/visor.component';
+import { UsuarioPasswordComponent } from './usuarios/usuario-password.component';
 
 
 
@@ -97,6 +98,7 @@ const pagesRoute: Routes = [
       { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes de Tema' }},
       { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de Usuario' }},
       { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador' }},
+      { path: 'usuario/password/:id', component: UsuarioPasswordComponent, data: { titulo: 'Actualizar Password' }},
       // Mantenimientos
       {
         path: 'usuarios',

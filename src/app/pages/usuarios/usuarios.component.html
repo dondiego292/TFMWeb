@@ -65,6 +65,9 @@
                                 <button (click)="borrarUsuario(usuario)" class="btn btn-danger">
                                 <i class="fa fa-trash-o"></i>
                               </button>
+                                <button [routerLink]="['/usuario/password', usuario._id]" type="button" class="btn-rounded btn-primary">
+                                <i class="fa fa-edit"></i>
+                                </button>
                             </td>
                         </tr>
                     </tbody>

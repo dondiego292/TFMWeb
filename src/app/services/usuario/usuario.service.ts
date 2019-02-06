@@ -173,4 +173,27 @@ export class UsuarioService {
     });
   }
 
+  obtenerUsuario( id: string) {
+    let url = URL_SERVICIOS + '/usuario/leer/' + id + '?token=' + this.token;
+    return this.http.get(url)
+            .map( (resp: any) => resp.usuario)
+            .catch(err => {
+              swal('Error', err.error.mensaje, 'error');
+              return Observable.throw(err);
+            });
+  }
+
+  actualizarPassUsuario( id: string, password: string) {
+    let url = URL_SERVICIOS + '/usuario/actualizarPass/' + id + '/' + password + '?token=' + this.token;
+    return this.http.get(url)
+            .map( (resp: any) => {
+              swal('Password', 'Actualizado Satisfactoriamente', 'success');
+              return resp.usuario;
+            })
+            .catch(err => {
+              swal('Error', err.error.mensaje, 'error');
+              return Observable.throw(err);
+            });
+  }
+
 }
