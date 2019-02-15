@@ -1,3 +1,4 @@
+export { ReporteService } from './reporte/reporte.service';
 export { RutasService } from './rutas/rutas.service';
 export { EncuestaGestorService } from './encuesta/encuesta-gestor.service';
 export { SupervisorGestorService } from './supervisor-gestor/supervisor-gestor.service';

@@ -81,6 +81,7 @@ import { VisorComponent } from './visor/visor.component';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { UsuarioPasswordComponent } from './usuarios/usuario-password.component';
+import { ReporteComponent } from './reporte/reporte.component';
 
 
 
@@ -135,6 +136,7 @@ import { UsuarioPasswordComponent } from './usuarios/usuario-password.component'
     EncuestaGestorComponent,
     VisorComponent,
     UsuarioPasswordComponent,
+    ReporteComponent,
   ],
   exports: [
     DashboardComponent,

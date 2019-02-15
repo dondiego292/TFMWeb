@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SettingsService, SidebarService, SharedService, UsuarioService, LoginGuardGuard, SubirArchivoService, SupervisorGestorService } from './service.index';
 import { EncuestaService, CatalogoService, CatalogoHijoService, TipoPreguntaService, PreguntaService, ReglaService, GestorService, EncuestaGestorService } from './service.index';
-import { HospitalService, MedicoService, AdminGuard, VerificaTokenGuard, RutasService } from './service.index';
+import { HospitalService, MedicoService, AdminGuard, VerificaTokenGuard, RutasService, ReporteService } from './service.index';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -37,7 +37,8 @@ import { DatePipe } from '@angular/common';
     SupervisorGestorService,
     EncuestaGestorService,
     DatePipe,
-    RutasService
+    RutasService,
+    ReporteService
   ],
   declarations: []
 })
