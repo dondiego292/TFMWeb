@@ -1,0 +1,62 @@
+<div class="row">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    <div class="col-12">
+        <div class="card">
+            <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+            <button type="button" class="btn btn-info" (click)="Upload()">Upload</button>
+
+            <div class="card-body table-responsive" *ngIf="data.length > 0">
+                <h3 class="card-title"> Datos a Cargar ( <small>{{data.length}}</small> )</h3>
+
+                <table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="10">
+                    <thead>
+                        <tr>
+                            <th>
+                                <mfDefaultSorter by="type">NOMBRE</mfDefaultSorter>
+                            </th>
+                            <th>
+                                <mfDefaultSorter by="name">APELLIDO</mfDefaultSorter>
+                            </th>
+                            <th>
+                                <mfDefaultSorter by="name">IDENTIFICACIÓN</mfDefaultSorter>
+                            </th>
+                            <th>
+                                <mfDefaultSorter by="name">TELÉFONO</mfDefaultSorter>
+                            </th>
+                            <th>
+                                <mfDefaultSorter by="name">GESTOR</mfDefaultSorter>
+                            </th>
+                            <th>
+                                <mfDefaultSorter by="name">GESTIÓN</mfDefaultSorter>
+                            </th>
+                            <th>
+
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of mf.data">
+                            <td>{{item.nombre}}</td>
+                            <td>{{item.apellido}}</td>
+                            <td>{{item.identificacion}}</td>
+                            <td>{{item.telefono}}</td>
+                            <td>{{item.gestor}}</td>
+                            <td>{{item.gestion}}</td>
+                            <td>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>

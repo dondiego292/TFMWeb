@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ReporteService } from '../../services/reporte/reporte.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
+
+
+
 @Component({
   selector: 'app-reporte',
   templateUrl: './reporte.component.html',
@@ -13,6 +16,8 @@ export class ReporteComponent implements OnInit {
   datos: any[] = [];
   public photo: any = null;
   public name: string = '';
+
+
   constructor(
     public _reporteService: ReporteService,
     public _DomSanitizer: DomSanitizer,
@@ -55,5 +60,9 @@ export class ReporteComponent implements OnInit {
     this.photo = null;
     this.name = '';
   }
+
+
+
+
 
 }

@@ -37,4 +37,13 @@ export class ReporteService {
       });
   }
 
+  cargarDatosExcel(json: any) {
+    let url = URL_SERVICIOS + `/carga?token=` + this._usuarioService.token;
+    console.log(url);
+    return this.http.post(url, json)
+      .map((resp: any) => {
+          return resp.ok;
+      });
+  }
+
 }

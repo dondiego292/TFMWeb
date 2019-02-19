@@ -49,6 +49,7 @@ import { EncuestaGestorComponent } from './encuesta/encuesta-gestor.component';
 import { VisorComponent } from './visor/visor.component';
 import { UsuarioPasswordComponent } from './usuarios/usuario-password.component';
 import { ReporteComponent } from './reporte/reporte.component';
+import { CargaComponent } from './carga/carga.component';
 
 
 
@@ -101,6 +102,7 @@ const pagesRoute: Routes = [
       { path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'Buscador' }},
       { path: 'usuario/password/:id', component: UsuarioPasswordComponent, data: { titulo: 'Actualizar Password' }},
       { path: 'reporte', component: ReporteComponent, data: { titulo: 'Reporte Publicidad' }},
+      { path: 'carga', component: CargaComponent, data: { titulo: 'Carga Archivo' }},
       // Mantenimientos
       {
         path: 'usuarios',
