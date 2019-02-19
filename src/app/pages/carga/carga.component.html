@@ -2,8 +2,10 @@
     <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
     <div class="col-12">
         <div class="card">
-            <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
-            <button type="button" class="btn btn-info" (click)="Upload()">Upload</button>
+            <input type="file" (change)="incomingfile($event)" placeholder="Cargar archivo" accept=".xlsx">
+            <button type="button" (click)="Upload()" class="btn btn-info" [disabled]="data.length === 0">Cargar</button>
+
+            
 
             <div class="card-body table-responsive" *ngIf="data.length > 0">
                 <h3 class="card-title"> Datos a Cargar ( <small>{{data.length}}</small> )</h3>

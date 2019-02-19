@@ -83,6 +83,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { UsuarioPasswordComponent } from './usuarios/usuario-password.component';
 import { ReporteComponent } from './reporte/reporte.component';
 import { CargaComponent } from './carga/carga.component';
+import { Reporte2Component } from './reporte2/reporte2.component';
 
 
 
@@ -139,6 +140,7 @@ import { CargaComponent } from './carga/carga.component';
     UsuarioPasswordComponent,
     ReporteComponent,
     CargaComponent,
+    Reporte2Component,
   ],
   exports: [
     DashboardComponent,

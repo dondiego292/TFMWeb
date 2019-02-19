@@ -1,0 +1,84 @@
+<div class="row">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body table-responsive">
+                <h3 class="card-title"> Datos Registrados ( <small>{{datos.length}}</small> )</h3>
+
+                <table class="table table-striped" [mfData]="datos" #mf="mfDataTable" [mfRowsOnPage]="10">
+                    <thead>
+                        <tr>
+                            <th>
+                                <mfDefaultSorter by="type">CASA PROPIA</mfDefaultSorter>
+                            </th>
+                            <th>
+                                <mfDefaultSorter by="name">OBSERVACIÓN</mfDefaultSorter>
+                            </th>
+                            <th>
+                                <mfDefaultSorter by="name">TELÉFONO</mfDefaultSorter>
+                            </th>
+                            <th>
+                                <mfDefaultSorter by="name">UBICACIÓN</mfDefaultSorter>
+                            </th>
+                            <th>
+                                <mfDefaultSorter by="name">MAPA</mfDefaultSorter>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of mf.data">
+                            <td>{{item.json['CasaPropia']}}</td>
+                            <td>{{item.json['Observacion']}}</td>
+                            <td>{{item.json['Telefono']}}</td>
+                            <td>{{item.json['Ubicacion']}}</td>
+
+                            <td>
+                                <button type="button" (click)="getData(item)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    Ver
+                                  </button>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{name}}</h5>
+                <button type="button" (click)="closeModal()" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body text-center">
+                <agm-map [latitude]="lat" [longitude]="lng" (mapReady)="mapReady($event)" [zoom]="zoom">
+                    <agm-marker [latitude]="lat" [longitude]="lng">
+                        <agm-info-window [disableAutoPan]="true">
+                            <strong>{{name}}</strong>
+                        </agm-info-window>
+                    </agm-marker>
+                </agm-map>
+            </div>
+            <div class="modal-footer">
+                <button type="button" (click)="closeModal()" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

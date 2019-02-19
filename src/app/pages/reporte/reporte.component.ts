@@ -43,7 +43,7 @@ export class ReporteComponent implements OnInit {
     this.name = item.json['nombre'];
     this._reporteService.cargarImagen(item._id)
         .subscribe(data => {
-          if (data.ok) {
+          if (data.ok && data.image !== undefined) {
             this.photo = this._DomSanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,' + data.image);
           } else {
             this.photo = null;
@@ -56,7 +56,6 @@ export class ReporteComponent implements OnInit {
   }
 
   closeModal() {
-    console.log('close modal');
     this.photo = null;
     this.name = '';
   }

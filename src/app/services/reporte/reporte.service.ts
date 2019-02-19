@@ -19,7 +19,7 @@ export class ReporteService {
   ) { }
 
   cargarDatos() {
-    let url = URL_SERVICIOS + '/reporte?token=' + this._usuarioService.token;
+    let url = URL_SERVICIOS + '/reporte/survey/Publicidad?token=' + this._usuarioService.token;
     return this.http.get(url)
       .map((resp: any) => {
         return resp.datas;
@@ -43,6 +43,28 @@ export class ReporteService {
     return this.http.post(url, json)
       .map((resp: any) => {
           return resp.ok;
+      });
+  }
+
+  cargarDatosGeolocalizacion() {
+    let url = URL_SERVICIOS + '/reporte/survey/Geolocalizacion?token=' + this._usuarioService.token;
+    return this.http.get(url)
+      .map((resp: any) => {
+        return resp.datas;
+      }).catch(err => {
+        swal('Error', err.error.mensaje, 'error');
+        return Observable.throw(err);
+      });
+  }
+
+  cargarDatosCliente(id: string) {
+    let url = URL_SERVICIOS + `/reporte/cliente/${id}?token=` + this._usuarioService.token;
+    return this.http.get(url)
+      .map((resp: any) => {
+        return resp.cliente;
+      }).catch(err => {
+        swal('Error', err.error.mensaje, 'error');
+        return Observable.throw(err);
       });
   }
 
