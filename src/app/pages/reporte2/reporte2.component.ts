@@ -43,6 +43,7 @@ export class Reporte2Component implements OnInit {
     this.lat = Number(item.json['latitud']);
     this.lng = Number(item.json['longitud']);
     let idCliente = item.json['client_web_id'];
+    this.name = '';
     this._reporteService.cargarDatosCliente(idCliente).subscribe(data => {
       this.name = `${data.nombre} ${data.apellido}`;
       console.log(this.name);
@@ -53,6 +54,7 @@ export class Reporte2Component implements OnInit {
   closeModal() {
     this.lat = 0;
     this.lng = 0;
+    this.name = '';
   }
 
   public markerClicked = (markerObj) => {

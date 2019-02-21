@@ -10,7 +10,7 @@
                         <ng-container>
                             <agm-polyline *ngFor="let polyline of polylines;let i = index;" [strokeColor]="polyline.color">
                                 <agm-polyline-point *ngFor="let point of polyline.path;let b = index;let last = last" [latitude]="point.Latitud" [longitude]="point.Longitud">
-                                    <agm-marker *ngIf="b == 0" [latitude]="point.Latitud" [longitude]="point.Longitud" iconUrl="/assets/img/init.png" (markerClick)="buscarGestor(point.Gestor)">
+                                    <agm-marker *ngIf="b === 0" [latitude]="point.Latitud" [longitude]="point.Longitud" iconUrl="assets/img/init.png" (markerClick)="buscarGestor(point.Gestor)">
                                         <agm-info-window>
                                             <strong>{{point.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</strong>
                                             <p *ngIf="nombreGestor">
@@ -28,7 +28,7 @@
                                         </agm-info-window>
                                     </agm-marker>-->
 
-                                    <agm-marker *ngIf="last" [latitude]="point.Latitud" [longitude]="point.Longitud" iconUrl="/assets/img/last.png" (markerClick)="buscarGestor(point.Gestor)">
+                                    <agm-marker *ngIf="last" [latitude]="point.Latitud" [longitude]="point.Longitud" iconUrl="assets/img/last.png" (markerClick)="buscarGestor(point.Gestor)">
                                         <agm-info-window>
                                             <strong>{{point.StartDate | date:'yyyy-MM-dd HH:mm:ss'}}</strong>
                                             <p *ngIf="nombreGestor">
